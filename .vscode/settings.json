@@ -1,10 +1,13 @@
 {
     "rust-analyzer.checkOnSave.overrideCommand": [
         "xargo",
-        "check",
+        "clippy",
         "--workspace",
         "--message-format=json",
-        "--all-features"
+        "--all-features",
+        "--",
+        "-A",
+        "clippy::borrow_interior_mutable_const"
     ],
     "rust-analyzer.updates.channel": "nightly",
 }
