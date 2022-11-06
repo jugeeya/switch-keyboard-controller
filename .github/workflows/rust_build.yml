@@ -8,7 +8,7 @@ on:
 jobs:
   plugin:
     env:
-      PLUGIN_NAME: switch-keyboard-controller
+      PLUGIN_NAME: switch_keyboard_controller
     runs-on: ubuntu-latest
     container: 
       image: jugeeya/cargo-skyline:3.0.0-dkp-beta
@@ -23,7 +23,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: plugin
-        path: target/aarch64-skyline-switch/release/lib${{env.PLUGIN_NAME}}.nro
+        path: target/aarch64-skyline-switch/release/libswitch_keyboard_controller.nro
   upload:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -43,3 +43,5 @@ jobs:
           name: beta
           body: >
             Beta built off of the latest code in the repository.
+          files: >
+            plugin/libswitch_keyboard_controller.nro
