@@ -2,18 +2,16 @@ name: Rust
 
 on:
   push:
-    branches: [ master ] # CHANGE "master" TO "main" IF THAT IS THE NAME OF YOUR MAIN BRANCH!
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
-  workflow_dispatch:
-
+    branches: [ main ]
 jobs:
   plugin:
     env:
-      PLUGIN_NAME: switch-keyboard-controller # CHANGE THIS TO THE NAME OF YOUR TEMPLATE!
+      PLUGIN_NAME: switch-keyboard-controller
     runs-on: ubuntu-latest
     container: 
-      image: jugeeya/cargo-skyline:2.1.0
+      image: jugeeya/cargo-skyline:3.0.0-dkp-beta
     steps:
     - uses: actions/checkout@v2
     - name: Build release NRO
@@ -26,25 +24,22 @@ jobs:
       with:
         name: plugin
         path: target/aarch64-skyline-switch/release/lib${{env.PLUGIN_NAME}}.nro
-# UNCOMMENT THE SECTION BELOW TO GET BETA RELEASES ON EVERY NEW COMMIT TO THE MAIN BRANCH
-#   upload:
-#     runs-on: ubuntu-latest
-#     if: github.ref == 'refs/heads/master'
-#     needs:
-#       - plugin
-#     steps:
-#     - name: Download all artifacts
-#       uses: actions/download-artifact@v2
-#     - name: Update Release
-#       uses: meeDamian/github-release@2.0
-#       with:
-#         token: ${{ secrets.GITHUB_TOKEN }}
-#         prerelease: true
-#         allow_override: true
-#         gzip: false
-#         tag: beta
-#         name: beta
-#         body: >
-#           Beta built off of the latest code in the repository. 
-#         files: >
-#           plugin/* 
+  upload:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - plugin
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v2
+      - name: Update Release
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          allow_override: true
+          gzip: false
+          tag: beta
+          name: beta
+          body: >
+            Beta built off of the latest code in the repository.

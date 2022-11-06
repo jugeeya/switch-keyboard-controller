@@ -205,7 +205,7 @@ Y1_MODIFIER = 0.33
 Y2_MODIFIER = 0.5
 Y3_MODIFIER = 0.75
 
-# Available Options:
+# Available Options for Keyboard Keys:
 #
-# todo
+# https://github.com/jugeeya/switch-keyboard-controller/blob/master/src/keyboard.rs#L9-L140
 "#;
