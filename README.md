@@ -49,7 +49,7 @@ Y3_MODIFIER = 0.75
 
 # Available Options for Keyboard Keys:
 #
-# https://github.com/jugeeya/switch-keyboard-controller/blob/master/src/keyboard.rs#L9-L140
+# https://github.com/jugeeya/switch-keyboard-controller/blob/main/src/keyboard.rs#L9-L140
 ```
 
 

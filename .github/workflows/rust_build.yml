@@ -42,6 +42,20 @@ jobs:
           tag: beta
           name: beta
           body: >
-            Beta built off of the latest code in the repository.
+            This works with hackable Switches running the custom firmware [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere/releases).
+
+            To install, download releases from the following pages:
+            - [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere/releases)
+            - [Skyline](https://github.com/shadowninja108/Skyline)
+            - [NRO Hook Plugin](https://github.com/ultimate-research/nro-hook-plugin)
+
+            You should have the following files in the following locations after downloading and installing to your SD card:
+            ```
+            SD:/atmosphere/contents/01006A800016E000/exefs/subsdk9
+            SD:/atmosphere/contents/01006A800016E000/exefs/main.npdm
+            SD:/atmosphere/contents/01006A800016E000/romfs/skyline/plugins/libswitch_keyboard_controller.nro
+            SD:/atmosphere/contents/01006A800016E000/romfs/skyline/plugins/libnro_hook.nro
+            ```
+
           files: >
             plugin/libswitch_keyboard_controller.nro
